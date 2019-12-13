@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2 style="text-align: center;">Weather Application</h2>
+
+<div class="row">
+  <div class="select" style="background-color:#0275d8;">
+    <h2 style="text-align: center;">Select the city</h2>
+    <div style="text-align: center;">
+      <select style="width: 150px !important;" (change)="selectCity($event)" size="{{numberOfCity}}">
+          <option [value]="cityDetails.zip_code" *ngFor="let cityDetails of cities">{{cityDetails.city}}</option>
+      </select>
+</div>
+
+
+<div class="wrapper">
+    <button (click)="getWeather($event)" type="button" [disabled]="selectedCity === null">Get Weather</button>
+</div>
+</div>
+
+  <div class="column" style="background-color:#bfc1c8;">
+    <h2 style="text-align: center;">Weather Details</h2>
+    <div class='forecast-content' *ngIf="weatherData !== null">
+      <div class='location'>{{weatherData.location.city}}, {{weatherData.location.country}}</div>
+      <div class="degree">
+
+            <span style="padding:2px"><img src="../assets/images/wi-humidity.svg" height="40" width="40" title="Humidity">{{weatherData.current_observation.atmosphere.humidity}}</span>
+            <span style="padding:2px"><img src="../assets/images/wi-barometer.svg" height="40" width="40" title="Pressure">{{weatherData.current_observation.atmosphere.pressure}}</span>
+            <span style="padding:2px"><img src="../assets/images/icon-wind.png" title="Wind Speed">{{weatherData.current_observation.wind.speed}}km/h</span>
+            <span style="padding:2px"><img src="../assets/images/icon-compass.png" title="Wind Direction">{{getWindDirection(weatherData.current_observation.wind.direction)}}</span>
+            
+              <span class="col-sm-3" style="padding:2px float: right;" class="num" title="Temperature">{{weatherData.current_observation.condition.temperature}}<sup>o</sup> C</span>
+              <span class="col-sm-3"  style="padding:2px" class="forecast-icon">{{weatherData.current_observation.condition.text}}</span>
+      </div>
+      <!-- <span><img src="../assets/images/wi-humidity.svg" height="40" width="40" title="Humidity">{{weatherData.current_observation.atmosphere.humidity}}</span>
+       <span><img src="../assets/images/wi-barometer.svg" height="40" width="40" title="Pressure">{{weatherData.current_observation.atmosphere.pressure}}</span>
+        <span><img src="../assets/images/icon-wind.png" title="Wind Speed">{{weatherData.current_observation.wind.speed}}km/h</span>
+        <span><img src="../assets/images/icon-compass.png" title="Wind Direction">{{getWindDirection(weatherData.current_observation.wind.direction)}}</span> -->
+  <div>
+  <h2 style="text-align: center;padding-top: 50px;">Forecast</h2>
+  <div class="row seven-cols" style="padding-top: 24px;">      
+    <div class="col-md-1">
+    <span>{{weatherData.forecasts[0].day}},{{formatDate(weatherData.forecasts[0].date) | date: 'dd/MM/yyyy'}}</span>
+    <span>{{weatherData.forecasts[0].text}}</span>
+    <div>High:{{weatherData.forecasts[0].high}}</div>
+    <div>Low:{{weatherData.forecasts[0].low}}</div>
+    </div>
+    <div class="col-md-1">
+    <span>{{weatherData.forecasts[1].day}},{{formatDate(weatherData.forecasts[0].date) | date: 'dd/MM/yyyy'}}</span>
+    <span>{{weatherData.forecasts[1].text}}</span>
+    <div>High:{{weatherData.forecasts[1].high}}</div>
+    <div>Low:{{weatherData.forecasts[1].low}}</div>
+    </div>
+    <div class="col-md-1">
+    <span>{{weatherData.forecasts[2].day}},{{formatDate(weatherData.forecasts[0].date) | date: 'dd/MM/yyyy'}}</span>
+    <span>{{weatherData.forecasts[2].text}}</span>
+    <div>High:{{weatherData.forecasts[2].high}}</div>
+    <div>Low:{{weatherData.forecasts[2].low}}</div>
+    </div>
+    <div class="col-md-1">
+    <span>{{weatherData.forecasts[3].day}},{{formatDate(weatherData.forecasts[0].date) | date: 'dd/MM/yyyy'}}</span>
+    <span>{{weatherData.forecasts[3].text}}</span>
+    <div>High:{{weatherData.forecasts[3].high}}</div>
+    <div>Low:{{weatherData.forecasts[3].low}}</div>
+    </div>
+    <div class="col-md-1">
+    <span>{{weatherData.forecasts[4].day}},{{formatDate(weatherData.forecasts[0].date) | date: 'dd/MM/yyyy'}}</span>
+    <span>{{weatherData.forecasts[4].text}}</span>
+    <div>High:{{weatherData.forecasts[4].high}}</div>
+    <div>Low:{{weatherData.forecasts[4].low}}</div>
+    </div>
+    <div class="col-md-1">
+    <span>{{weatherData.forecasts[5].day}},{{formatDate(weatherData.forecasts[0].date) | date: 'dd/MM/yyyy'}}</span>
+    <span>{{weatherData.forecasts[5].text}}</span>
+    <div>High:{{weatherData.forecasts[5].high}}</div>
+    <div>Low:{{weatherData.forecasts[5].low}}</div>
+    </div>
+    <div class="col-md-1">
+    <span>{{weatherData.forecasts[6].day}},{{formatDate(weatherData.forecasts[0].date) | date: 'dd/MM/yyyy'}}</span>
+    <span>{{weatherData.forecasts[6].text}}</span>
+    <div>High:{{weatherData.forecasts[6].high}}</div>
+    <div>Low:{{weatherData.forecasts[6].low}}</div>
+    </div>
+  </div>
+  </div> 
+  
+    </div>
+    <div *ngIf="weatherData === null" style="text-align: center;">Select a city to get weather details</div>
+  </div>
+</div>
+
+</body>
+</html>

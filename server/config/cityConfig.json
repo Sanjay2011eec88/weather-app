@@ -1,0 +1,7 @@
+{
+  "cityList": [
+    {"city": "Phoenix","zip_code": 85001},
+    {"city": "Huntsville","zip_code": 35801},
+    {"city": "Denver", "zip_code": 80201}
+  ]
+}

@@ -1,0 +1,78 @@
+* {
+  box-sizing: border-box;
+}
+
+.select{
+    float: left;
+  width: 30%;
+  padding: 10px;
+  height: 500px; /* Should be removed. Only for demonstration */
+}
+/* Create two equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 70%;
+  padding: 10px;
+  height: 500px; /* Should be removed. Only for demonstration */
+}
+.wrapper {
+    text-align: center;
+        margin-top: 30px;
+}
+
+.button {
+    position: absolute;
+    top: 50%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.forecast{
+  float: left;
+  width: 25%;
+  content: "";
+  display: table;
+  clear: both;
+}
+
+@media (min-width: 768px){
+  .seven-cols .col-md-1,
+  .seven-cols .col-sm-1,
+  .seven-cols .col-lg-1  {
+    width: 100%;
+    *width: 100%;
+  }
+}
+
+@media (min-width: 992px) {
+  .seven-cols .col-md-1,
+  .seven-cols .col-sm-1,
+  .seven-cols .col-lg-1 {
+    width: 14.285714285714285714285714285714%;
+    *width: 14.285714285714285714285714285714%;
+  }
+}
+
+/**
+ *  The following is not really needed in this case
+ *  Only to demonstrate the usage of @media for large screens
+ */    
+@media (min-width: 1200px) {
+  .seven-cols .col-md-1,
+  .seven-cols .col-sm-1,
+  .seven-cols .col-lg-1 {
+    width: 14.285714285714285714285714285714%;
+    *width: 14.285714285714285714285714285714%;
+  }
+}
+
+.col-md-1{
+    padding-left: 50px;
+    padding-right: 50px;
+    max-width: 13.333333%
+}
