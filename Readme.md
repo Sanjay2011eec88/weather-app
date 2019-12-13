@@ -16,4 +16,4 @@ $ ng build -op ./public --prod
 $ npm install
 $ npm start
 ```
-### Open http:localhost:3000 on browser for using the application
+### Open http://localhost:3000 on browser for using the application
